@@ -1,6 +1,8 @@
 {
     "twilio":{
         "accountSID": "looooooooooongStriiiiiing",
-        "authToken": "token if you got gottem"
+        "authToken": "token if you got gottem",
+        "fromNumber": "+16155551234",
+        "toNumber": "+19015551337"
     }
 }
