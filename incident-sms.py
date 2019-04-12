@@ -72,8 +72,12 @@ class Application(tk.Frame):
         self.textAssociates.grid(row=3,column=1)
 
     def prepTwilio(self):
-        with open("config.json") as json_data_file:
-            config = json.load(json_data_file)
+        try:
+            with open("config.json") as json_data_file:
+                config = json.load(json_data_file)
+        except FileNotFoundError:
+            print("Config file not found.")
+            return
 
         accountSid = config['twilio']['accountSID']
         authToken = config['twilio']['authToken']
