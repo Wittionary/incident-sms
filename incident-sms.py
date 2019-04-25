@@ -52,7 +52,7 @@ class Application(tk.Frame):
         self.labelError.grid(row=1,column=0)
 
         # text field 2
-        self.textError = tk.Entry(self)
+        self.textError = tk.Text(self)
         self.textError.grid(row=1,column=1)
 
         # label 3
