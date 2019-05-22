@@ -6,8 +6,12 @@ import json
 # Contact list (hardcode at first)
 # Format/template of text (hardcode at first)
 # SMS provider - so far just Twilio
-
-# Needs to be done outside Application class so it's global?
+# [DONE] make text boxes bigger (longer?)
+# add conference call info to text
+# Notify user with a confirmation that a text was sent
+# get clarification of need for "Associates Contacted" field so I can determine if we can remove it from text
+# On the confirmation popup, text needs to be left aligned
+# [DOING] Send text on confirmation popup _confirm_ instead of "Send SMS"
 
 class Application(tk.Frame):
     def __init__(self, master=None):
@@ -32,7 +36,7 @@ class Application(tk.Frame):
         # -----------------------------------
 
         # send SMS button
-        self.twilioButton = tk.Button(self,text="Twilio SMS", fg="red", command=self.confirmSMSmessage)
+        self.twilioButton = tk.Button(self,text="Send SMS", fg="red", command=self.confirmSMSmessage)
         self.twilioButton.grid(row=10,column=1)
 
         # quit button
@@ -44,7 +48,7 @@ class Application(tk.Frame):
         self.labelDevice.grid(row=0,column=0)
 
         # text field 1
-        self.textDevice = tk.Entry(self)
+        self.textDevice = tk.Entry(self, width=60)
         self.textDevice.grid(row=0,column=1)
 
         # label 2
@@ -52,7 +56,7 @@ class Application(tk.Frame):
         self.labelError.grid(row=1,column=0)
 
         # text field 2
-        self.textError = tk.Text(self)
+        self.textError = tk.Text(self, width=60)
         self.textError.grid(row=1,column=1)
 
         # label 3
@@ -60,7 +64,7 @@ class Application(tk.Frame):
         self.labelTime.grid(row=2,column=0)
 
         # text field 3
-        self.textTime = tk.Entry(self)
+        self.textTime = tk.Entry(self, width=60)
         self.textTime.grid(row=2,column=1)
 
         # label 4
@@ -68,7 +72,7 @@ class Application(tk.Frame):
         self.labelAssociates.grid(row=3,column=0)
 
         # text field 4
-        self.textAssociates = tk.Entry(self)
+        self.textAssociates = tk.Entry(self, width=60)
         self.textAssociates.grid(row=3,column=1)
 
     def prepTwilio(self):
@@ -87,7 +91,7 @@ class Application(tk.Frame):
     def createSMS(self):
         # Message = label text + \n + text.get() + \n\n
         message = f"Device:\n{self.textDevice.get()}\n\n"
-        message += f"Error or Datapoint & Value:\n{self.textError.get()}\n\n"
+        message += f"Error or Datapoint & Value:\n{self.textError.get(1.0, 50.0)}\n\n"
         message += f"Time Began:\n{self.textTime.get()}\n\n"
         message += f"Associates Contacted:\n{self.textAssociates.get()}\n\n"
         
@@ -113,11 +117,14 @@ class Application(tk.Frame):
         popup.title("Are you sure?")
         labelSMS = tk.Label(popup, text=self.createSMS())
         labelSMS.pack(side="top")
-        buttonConfirm = tk.Button(popup, text="Send", command = self.sendSMS())
+        buttonConfirm = tk.Button(popup, text="Send", fg="red", command = self.testFunc())
         buttonConfirm.pack(side=tk.LEFT)
         buttonCancel = tk.Button(popup, text="Cancel", command=popup.destroy)
         buttonCancel.pack(side=tk.RIGHT)
         popup.mainloop()
+
+    def testFunc(self):
+        print("Func executed")
 
 root = tk.Tk()
 app = Application(master=root)
