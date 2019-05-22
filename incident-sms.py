@@ -7,11 +7,12 @@ import json
 # Format/template of text (hardcode at first)
 # SMS provider - so far just Twilio
 # [DONE] make text boxes bigger (longer?)
-# add conference call info to text
+# [DONE] add conference call info to text
 # Notify user with a confirmation that a text was sent
 # get clarification of need for "Associates Contacted" field so I can determine if we can remove it from text
 # On the confirmation popup, text needs to be left aligned
-# [DOING] Send text on confirmation popup _confirm_ instead of "Send SMS"
+# [DONE] Send text on confirmation popup _confirm_ instead of "Send SMS"
+# **Close the confirmation popup after hitting _confirm_
 
 class Application(tk.Frame):
     def __init__(self, master=None):
@@ -91,9 +92,13 @@ class Application(tk.Frame):
     def createSMS(self):
         # Message = label text + \n + text.get() + \n\n
         message = f"Device:\n{self.textDevice.get()}\n\n"
-        message += f"Error or Datapoint & Value:\n{self.textError.get(1.0, 50.0)}\n\n"
+        message += f"Error or Datapoint & Value:\n{self.textError.get(1.0, 50.0)}\n"
         message += f"Time Began:\n{self.textTime.get()}\n\n"
         message += f"Associates Contacted:\n{self.textAssociates.get()}\n\n"
+        message += ("**Please join the Conference Bridge**\n"
+                    "Phone Number: 1-240-454-0879\n"
+                    "Attendee access code: 93008961\n"
+                    "Mobile-friendly: 240-454-0879,,,93008961#,,,#")
         
         return message
 
@@ -117,14 +122,11 @@ class Application(tk.Frame):
         popup.title("Are you sure?")
         labelSMS = tk.Label(popup, text=self.createSMS())
         labelSMS.pack(side="top")
-        buttonConfirm = tk.Button(popup, text="Send", fg="red", command = self.testFunc())
+        buttonConfirm = tk.Button(popup, text="Confirm", fg="red", command = self.sendSMS)
         buttonConfirm.pack(side=tk.LEFT)
         buttonCancel = tk.Button(popup, text="Cancel", command=popup.destroy)
         buttonCancel.pack(side=tk.RIGHT)
         popup.mainloop()
-
-    def testFunc(self):
-        print("Func executed")
 
 root = tk.Tk()
 app = Application(master=root)
