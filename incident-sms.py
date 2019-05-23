@@ -3,7 +3,7 @@ from twilio.rest import Client
 import json
 
 # TODO:
-# [DOING] Contact list (hardcode at first)
+# [DONE] Contact list (hardcode at first)
 # Format/template of text (hardcode at first)
 # SMS provider - so far just Twilio
 # [DONE] make text boxes bigger (longer?)
