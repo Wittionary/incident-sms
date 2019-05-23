@@ -3,7 +3,7 @@ from twilio.rest import Client
 import json
 
 # TODO:
-# Contact list (hardcode at first)
+# [DOING] Contact list (hardcode at first)
 # Format/template of text (hardcode at first)
 # SMS provider - so far just Twilio
 # [DONE] make text boxes bigger (longer?)
@@ -12,7 +12,7 @@ import json
 # get clarification of need for "Associates Contacted" field so I can determine if we can remove it from text
 # On the confirmation popup, text needs to be left aligned
 # [DONE] Send text on confirmation popup _confirm_ instead of "Send SMS"
-# **Close the confirmation popup after hitting _confirm_
+# Close the confirmation popup after hitting _confirm_
 
 class Application(tk.Frame):
     def __init__(self, master=None):
@@ -115,6 +115,7 @@ class Application(tk.Frame):
                      from_=fromNumber,
                      to=toNumber
                  )
+        
         print(message.sid)
               
     def confirmSMSmessage(self):
