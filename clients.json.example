@@ -1,12 +1,9 @@
 {
-    "clients":{
-        "Full Client Name":{
-            "abbreviation": "FCN",
-            "contacts":{
-                "FirstName LastName": "+19017771234",
-                "Second Person": "+19876543210"
-            }
+    "Full Client Name":{
+        "abbreviation": "FCN",
+        "contacts":{
+            "FirstName LastName": "+19017771234",
+            "Second Person": "+19876543210"
         }
     }
-
 }
