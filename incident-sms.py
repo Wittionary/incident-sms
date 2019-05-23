@@ -107,16 +107,23 @@ class Application(tk.Frame):
             config = json.load(json_data_file)
 
         fromNumber = config['twilio']['fromNumber']
-        toNumber = config['twilio']['toNumber']
+
+        with open("clients.json") as json_data_file:
+            clients = json.load(json_data_file)
+
+        contacts = clients['Test Client']['contacts']
+       
+        for contact in contacts.values():
+            toNumber = contact
         
-        message = self.twilioClient.messages \
-                .create(
-                     body=self.createSMS(),
-                     from_=fromNumber,
-                     to=toNumber
-                 )
-        
-        print(message.sid)
+            message = self.twilioClient.messages \
+                    .create(
+                        body=self.createSMS(),
+                        from_=fromNumber,
+                        to=toNumber
+                    )
+            
+            print(message.sid)
               
     def confirmSMSmessage(self):
         popup = tk.Tk()
