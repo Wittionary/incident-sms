@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Incident SMS</title>
+  </head>
+  <body>
+    {% extends "navigation.html" %}
+    {% block content %}
+
+    <form action="{{ url_for('sendSMS') }}" method="post">
+      Device <input type="text" name="device"><br/>
+      Error or Datapoint & Value <textarea name="errorinfo" cols="60" rows="10"></textarea><br/>
+      Time Began <input type="datetime-local" name="timebegan"><br/>
+      Associates Contacted <input type="text" name="associatescontacted"><br/>
+      <br/>
+      
+      <input type="submit">
+      <input type="reset">
+    </form>
+
+    {% endblock %}
+  </body>
+</html>
