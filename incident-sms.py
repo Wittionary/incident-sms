@@ -1,6 +1,7 @@
 import tkinter as tk
 from twilio.rest import Client
 import json
+from flask import Flask
 
 # TODO:
 # [DONE] Contact list (hardcode at first)
@@ -13,6 +14,21 @@ import json
 # On the confirmation popup, text needs to be left aligned
 # [DONE] Send text on confirmation popup _confirm_ instead of "Send SMS"
 # Close the confirmation popup after hitting _confirm_
+# --
+# Convert to Flask app
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "Hello, World!"
+
+@app.route("/witt")
+def witt():
+    return "Hell, Witt"
+
+if __name__ == "__incident-sms__":
+    app.run(debug=True)
 
 class Application(tk.Frame):
     def __init__(self, master=None):
