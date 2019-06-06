@@ -85,4 +85,4 @@ def sendSMS(): # needs to take in SMS provider and format/template as params in 
     #def confirmSMSmessage(self):
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", debug=True)
