@@ -12,6 +12,7 @@ ADD /templates/response.html /templates/response.html
 ADD config.json /
 ADD clients.json /
 ADD incident-sms.py /
+RUN chmod 644 incident-sms.py
 
 EXPOSE 5000
-ENTRYPOINT [ "python", "./incident-sms.py"]
+ENTRYPOINT [ "python", "incident-sms.py" ]
