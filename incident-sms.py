@@ -41,7 +41,6 @@ def prepTwilio():
     return client
 
 def createSMS():
-    # Message = label text + \n + text.get() + \n\n
     message = f"Device:\n{request.form['device']}\n\n"
     message += f"Error or Datapoint & Value:\n{request.form['errorinfo']}\n\n"
     message += f"Time Began:\n{request.form['timebegan']}\n\n"
