@@ -4,18 +4,12 @@ import json
 from flask import Flask, render_template, request
 
 # TODO:
-# [DONE] Contact list (hardcode at first)
 # Format/template of text (hardcode at first)
-# SMS provider - so far just Twilio
-# [DONE] make text boxes bigger (longer?)
-# [DONE] add conference call info to text
+# Get clarification of need for "Associates Contacted" field so I can determine if we can remove it from text
+# Add a confirmation pop-up or preview field/label with second "submit" button
 # Notify user with a confirmation that a text was sent
-# get clarification of need for "Associates Contacted" field so I can determine if we can remove it from text
-# On the confirmation popup, text needs to be left aligned
-# [DONE] Send text on confirmation popup _confirm_ instead of "Send SMS"
-# Close the confirmation popup after hitting _confirm_
-# --
-# Convert to Flask app
+# Add error handling for when twilio gives non-200 response
+
 
 app = Flask(__name__)
 
