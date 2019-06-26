@@ -1,6 +1,6 @@
-if [[ $(git pull) != "Already up to date." ]]; then
+if [[ $(git pull git@github.com:wittionary/incident-sms) != "Already up to date." ]]; then
         cd ~/incident-sms
-        git pull
+        git pull git@github.com:wittionary/incident-sms
         TAG=`date "+%Y%m%d%H%M"`
         docker build -t incident-sms:$TAG .
         docker stop incident-sms
