@@ -40,9 +40,9 @@ def createSMS():
     message += f"Time Began:\n{request.form['timebegan']}\n\n"
     message += f"Associates Contacted:\n{request.form['associatescontacted']}\n\n"
     message += ("**Please join the Conference Bridge**\n"
-                "Phone Number: 1-240-454-0879\n"
-                "Attendee access code: 93008961\n"
-                "Mobile-friendly: 240-454-0879,,,93008961#,,,#")
+                "Phone Number: 1-901-555-1234\n"
+                "Attendee access code: 12345678\n"
+                "Mobile-friendly: 901-555-1234,,,12345678#,,,#")
     
     return message
 
